@@ -8,4 +8,7 @@
     <ProjectReference Include="../ReservesOfRussia.BLL/ReservesOfRussia.BLL.csproj" />
     <ProjectReference Include="../ReservesOfRussia.DAL/ReservesOfRussia.DAL.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
 </Project>
