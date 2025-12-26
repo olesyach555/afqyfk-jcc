@@ -42,7 +42,7 @@ namespace ReservesOfRussia.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load regions: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                App.ShowError("Failed to load regions.", ex);
                 this.Close();
             }
         }
@@ -83,7 +83,7 @@ namespace ReservesOfRussia.UI
             catch (Exception ex)
             {
                 // Catches other errors (e.g., database)
-                MessageBox.Show($"An error occurred while saving: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                App.ShowError("An error occurred while saving.", ex);
             }
         }
     }

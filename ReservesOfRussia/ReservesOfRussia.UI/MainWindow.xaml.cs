@@ -36,7 +36,7 @@ namespace ReservesOfRussia.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load reserves: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                App.ShowError("Failed to load reserves.", ex);
             }
         }
 
@@ -89,7 +89,7 @@ namespace ReservesOfRussia.UI
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Failed to delete reserve: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        App.ShowError($"Failed to delete reserve '{selectedReserve.Name}'.", ex);
                     }
                 }
             }
