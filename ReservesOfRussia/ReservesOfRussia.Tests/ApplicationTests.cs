@@ -1,7 +1,10 @@
 using ReservesOfRussia.BLL.Services;
+using ReservesOfRussia.DAL;
 using ReservesOfRussia.DAL.Models;
 using System;
 using System.Configuration;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 
 namespace ReservesOfRussia.Tests
@@ -9,13 +12,30 @@ namespace ReservesOfRussia.Tests
     public class ApplicationTests
     {
         private static ReserveService _reserveService;
+        private static string _connectionString;
+        private static string _dbFile;
 
         public static void Main(string[] args)
         {
             // --- Setup ---
-            // In a real test project, this would be configured in App.config
-            string connectionString = ConfigurationManager.ConnectionStrings["ReservesDbConnection"]?.ConnectionString ?? "data source=(localdb)\\MSSQLLocalDB;initial catalog=ReservesDB;integrated security=True;";
-            _reserveService = new ReserveService(connectionString);
+            _connectionString = ConfigurationManager.ConnectionStrings["ReservesDbConnection"]?.ConnectionString;
+            if (string.IsNullOrEmpty(_connectionString))
+            {
+                Console.WriteLine("ERROR: Connection string 'ReservesDbConnection' not found in App.config.");
+                return;
+            }
+
+            var builder = new SQLiteConnectionStringBuilder(_connectionString);
+            _dbFile = builder.DataSource;
+
+            // Clean up previous test runs
+            if (File.Exists(_dbFile))
+            {
+                File.Delete(_dbFile);
+            }
+
+            DatabaseSetup.InitializeDatabase(_connectionString);
+            _reserveService = new ReserveService(_connectionString);
 
             Console.WriteLine("Running tests...");
 
@@ -24,6 +44,13 @@ namespace ReservesOfRussia.Tests
 
             bool test2_success = RunValidationErrorTest();
             Console.WriteLine($"Test Scenario 2 (Validation Error): {(test2_success ? "PASSED" : "FAILED")}");
+
+            // --- Teardown ---
+            if (File.Exists(_dbFile))
+            {
+                File.Delete(_dbFile);
+                Console.WriteLine("\nTest database cleaned up.");
+            }
 
             Console.WriteLine("\nTesting complete. Press any key to exit.");
             Console.ReadKey();

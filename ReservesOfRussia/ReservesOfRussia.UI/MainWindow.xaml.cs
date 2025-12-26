@@ -1,4 +1,5 @@
 using ReservesOfRussia.BLL.Services;
+using ReservesOfRussia.DAL;
 using ReservesOfRussia.DAL.Models;
 using System;
 using System.Configuration;
@@ -22,6 +23,20 @@ namespace ReservesOfRussia.UI
                 Application.Current.Shutdown();
                 return;
             }
+
+            // --- Initialize the database on startup ---
+            try
+            {
+                DatabaseSetup.InitializeDatabase(connectionString);
+            }
+            catch (Exception ex)
+            {
+                App.ShowError("A critical error occurred while setting up the database.", ex);
+                Application.Current.Shutdown();
+                return;
+            }
+            // ------------------------------------------
+
             _reserveService = new ReserveService(connectionString);
             LoadReserves();
         }
