@@ -20,7 +20,7 @@ namespace ReservesOfRussia.UI
 
             if (reserveToEdit != null)
             {
-                Title = "Edit Reserve";
+                Title = "Изменить заповедник";
                 // Populate fields with existing data
                 txtName.Text = _currentReserve.Name;
                 cmbRegion.SelectedValue = _currentReserve.RegionId;
@@ -30,7 +30,7 @@ namespace ReservesOfRussia.UI
             }
             else
             {
-                Title = "Add New Reserve";
+                Title = "Добавить новый заповедник";
             }
         }
 
@@ -42,7 +42,7 @@ namespace ReservesOfRussia.UI
             }
             catch (Exception ex)
             {
-                App.ShowError("Failed to load regions.", ex);
+                App.ShowError("Не удалось загрузить регионы.", ex);
                 this.Close();
             }
         }
@@ -52,13 +52,13 @@ namespace ReservesOfRussia.UI
             // --- Input Gathering & Basic Validation ---
             if (cmbRegion.SelectedValue == null)
             {
-                MessageBox.Show("Please select a region.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Пожалуйста, выберите регион.", "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if (!decimal.TryParse(txtArea.Text, out decimal area))
             {
-                MessageBox.Show("Please enter a valid number for the area.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Пожалуйста, введите корректное число для площади.", "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -78,12 +78,12 @@ namespace ReservesOfRussia.UI
             catch (ArgumentException argEx)
             {
                 // Catches validation errors from BLL
-                MessageBox.Show(argEx.Message, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(argEx.Message, "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception ex)
             {
                 // Catches other errors (e.g., database)
-                App.ShowError("An error occurred while saving.", ex);
+                App.ShowError("Произошла ошибка при сохранении.", ex);
             }
         }
     }

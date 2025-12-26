@@ -27,7 +27,7 @@ namespace ReservesOfRussia.UI
                 current = current.InnerException;
             }
 
-            MessageBox.Show(detailedMessage.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(detailedMessage.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ReservesOfRussia.UI
             string connectionString = ConfigurationManager.ConnectionStrings["ReservesDbConnection"]?.ConnectionString;
             if (string.IsNullOrEmpty(connectionString))
             {
-                MessageBox.Show("Connection string 'ReservesDbConnection' not found in App.config.", "Configuration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Строка подключения 'ReservesDbConnection' не найдена в App.config.", "Ошибка конфигурации", MessageBoxButton.OK, MessageBoxImage.Error);
                 Application.Current.Shutdown();
                 return;
             }
@@ -31,7 +31,7 @@ namespace ReservesOfRussia.UI
             }
             catch (Exception ex)
             {
-                App.ShowError("A critical error occurred while setting up the database.", ex);
+                App.ShowError("Произошла критическая ошибка при настройке базы данных.", ex);
                 Application.Current.Shutdown();
                 return;
             }
@@ -51,7 +51,7 @@ namespace ReservesOfRussia.UI
             }
             catch (Exception ex)
             {
-                App.ShowError("Failed to load reserves.", ex);
+                App.ShowError("Не удалось загрузить заповедники.", ex);
             }
         }
 
@@ -86,7 +86,7 @@ namespace ReservesOfRussia.UI
             }
             else
             {
-                MessageBox.Show("Please select a reserve to edit.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Пожалуйста, выберите заповедник для изменения.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -94,7 +94,7 @@ namespace ReservesOfRussia.UI
         {
             if (reservesListBox.SelectedItem is Reserve selectedReserve)
             {
-                var result = MessageBox.Show($"Are you sure you want to delete '{selectedReserve.Name}'?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var result = MessageBox.Show($"Вы уверены, что хотите удалить '{selectedReserve.Name}'?", "Подтвердите удаление", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -104,13 +104,13 @@ namespace ReservesOfRussia.UI
                     }
                     catch (Exception ex)
                     {
-                        App.ShowError($"Failed to delete reserve '{selectedReserve.Name}'.", ex);
+                        App.ShowError($"Не удалось удалить заповедник '{selectedReserve.Name}'.", ex);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Please select a reserve to delete.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Пожалуйста, выберите заповедник для удаления.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -123,18 +123,18 @@ namespace ReservesOfRussia.UI
                 {
                     FlowDocument doc = new FlowDocument();
                     doc.Blocks.Add(new Paragraph(new Run(selectedReserve.Name) { FontSize = 20, FontWeight = FontWeights.Bold }));
-                    doc.Blocks.Add(new Paragraph(new Run($"Region: {selectedReserve.Region?.Name}")));
-                    doc.Blocks.Add(new Paragraph(new Run($"Area: {selectedReserve.Area:N2} sq. km")));
-                    doc.Blocks.Add(new Paragraph(new Run($"Founded: {selectedReserve.FoundationDate:dd MMMM yyyy}")));
+                    doc.Blocks.Add(new Paragraph(new Run($"Регион: {selectedReserve.Region?.Name}")));
+                    doc.Blocks.Add(new Paragraph(new Run($"Площадь: {selectedReserve.Area:N2} кв. км")));
+                    doc.Blocks.Add(new Paragraph(new Run($"Дата основания: {selectedReserve.FoundationDate:dd MMMM yyyy}")));
                     doc.Blocks.Add(new Paragraph(new Run(selectedReserve.Description)));
 
                     IDocumentPaginatorSource idpSource = doc;
-                    printDialog.PrintDocument(idpSource.DocumentPaginator, $"Reserve Info: {selectedReserve.Name}");
+                    printDialog.PrintDocument(idpSource.DocumentPaginator, $"Информация о заповеднике: {selectedReserve.Name}");
                 }
             }
             else
             {
-                MessageBox.Show("Please select a reserve to print.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Пожалуйста, выберите заповедник для печати.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

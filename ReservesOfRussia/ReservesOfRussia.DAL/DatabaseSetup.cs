@@ -52,13 +52,13 @@ namespace ReservesOfRussia.DAL
                         FOREIGN KEY(""RegionId"") REFERENCES ""Regions""(""Id"") ON DELETE CASCADE
                     );
 
-                    INSERT INTO Regions (Name) VALUES ('Krasnoyarsk Krai'), ('Kamchatka Krai'), ('Buryatia Republic');
+                    INSERT INTO Regions (Name) VALUES ('Красноярский край'), ('Камчатский край'), ('Республика Бурятия');
 
                     INSERT INTO Reserves (Name, Description, Area, FoundationDate, RegionId)
                     VALUES
-                    ('Sayano-Shushensky', 'Located in Krasnoyarsk Krai on the left bank of the Yenisei River.', 3903.68, '1976-03-17', 1),
-                    ('Kronotsky', 'One of the oldest reserves in Russia, located in Kamchatka.', 11476.19, '1934-11-01', 2),
-                    ('Barguzinsky', 'The oldest reserve in Russia, on the shore of Lake Baikal.', 3743.22, '1917-01-11', 3);
+                    ('Саяно-Шушенский', 'Расположен в Красноярском крае на левом берегу Енисея.', 3903.68, '1976-03-17', 1),
+                    ('Кроноцкий', 'Один из старейших заповедников России, расположен на Камчатке.', 11476.19, '1934-11-01', 2),
+                    ('Баргузинский', 'Старейший заповедник России, на берегу озера Байкал.', 3743.22, '1917-01-11', 3);
                 ";
 
                 using (var command = new SQLiteCommand(createScript, connection))
