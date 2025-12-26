@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../ReservesOfRussia.DAL/ReservesOfRussia.DAL.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,40 @@
+<Window x:Class="ReservesOfRussia.UI.AddEditReserveWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add/Edit Reserve" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner"
+        MinWidth="300">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Name:" VerticalAlignment="Center" Margin="0,0,10,5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtName" Margin="0,0,0,5"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Region:" VerticalAlignment="Center" Margin="0,0,10,5"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cmbRegion" DisplayMemberPath="Name" SelectedValuePath="Id" Margin="0,0,0,5"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Area (sq. km):" VerticalAlignment="Center" Margin="0,0,10,5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtArea" Margin="0,0,0,5"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Foundation Date:" VerticalAlignment="Center" Margin="0,0,10,5"/>
+        <DatePicker Grid.Row="3" Grid.Column="1" x:Name="dpFoundationDate" Margin="0,0,0,5"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Description:" VerticalAlignment="Top" Margin="0,0,10,5"/>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True" Height="100" VerticalScrollBarVisibility="Auto" Margin="0,0,0,5"/>
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="btnSave" Content="Save" Width="75" IsDefault="True" Click="btnSave_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" Width="75" IsCancel="True" Margin="5,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

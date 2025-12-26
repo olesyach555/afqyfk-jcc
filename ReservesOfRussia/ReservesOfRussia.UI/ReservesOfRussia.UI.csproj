@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../ReservesOfRussia.BLL/ReservesOfRussia.BLL.csproj" />
+    <ProjectReference Include="../ReservesOfRussia.DAL/ReservesOfRussia.DAL.csproj" />
+  </ItemGroup>
+</Project>
