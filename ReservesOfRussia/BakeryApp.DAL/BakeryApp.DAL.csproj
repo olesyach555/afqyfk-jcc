@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net472</TargetFramework>
+    <RootNamespace>BakeryApp.DAL</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../ReservesOfRussia.BLL/ReservesOfRussia.BLL.csproj" />
-    <ProjectReference Include="../ReservesOfRussia.DAL/ReservesOfRussia.DAL.csproj" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

@@ -3,10 +3,11 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net472</TargetFramework>
     <UseWPF>true</UseWPF>
+    <RootNamespace>BakeryApp.UI</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../ReservesOfRussia.BLL/ReservesOfRussia.BLL.csproj" />
-    <ProjectReference Include="../ReservesOfRussia.DAL/ReservesOfRussia.DAL.csproj" />
+    <ProjectReference Include="../BakeryApp.BLL/BakeryApp.BLL.csproj" />
+    <ProjectReference Include="../BakeryApp.DAL/BakeryApp.DAL.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

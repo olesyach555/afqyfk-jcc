@@ -1,7 +1,7 @@
-<Application x:Class="ReservesOfRussia.UI.App"
+<Application x:Class="BakeryApp.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LoginWindow.xaml">
     <Application.Resources>
 
     </Application.Resources>
