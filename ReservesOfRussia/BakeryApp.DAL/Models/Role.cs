@@ -1,6 +1,6 @@
-namespace ReservesOfRussia.DAL.Models
+namespace BakeryApp.DAL.Models
 {
-    public class Region
+    public class Role
     {
         public int Id { get; set; }
         public string Name { get; set; }

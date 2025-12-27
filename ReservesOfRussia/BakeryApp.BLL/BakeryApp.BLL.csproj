@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
+    <RootNamespace>BakeryApp.BLL</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../ReservesOfRussia.DAL/ReservesOfRussia.DAL.csproj" />
+    <ProjectReference Include="../BakeryApp.DAL/BakeryApp.DAL.csproj" />
   </ItemGroup>
 </Project>

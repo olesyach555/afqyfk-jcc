@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Windows;
 
-namespace ReservesOfRussia.UI
+namespace BakeryApp.UI
 {
     /// <summary>
     /// Interaction logic for App.xaml
